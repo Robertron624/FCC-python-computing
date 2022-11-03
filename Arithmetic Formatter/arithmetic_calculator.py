@@ -1,6 +1,6 @@
 def arithmetic_arranger(problems, showResult=False):
 
-    formated_string = ""
+    formatted_operations = ""
 
     if(len(problems) > 5):
         return "Error: Too many problems"
@@ -29,6 +29,10 @@ def arithmetic_arranger(problems, showResult=False):
         first_line = f"{' '* (separator_number - len(first_number))}{first_number}"
         second_line = f"{operator}{' ' * (((separator_number - len(second_number)))-1)}{second_number}"
 
+        operation_to_add = f"{first_line}\n{second_line}\n{third_line}\n"
+
+        if not showResult:
+            formatted_operations += operation_to_add
         if showResult:
             result = 0
             if operator == "+":
@@ -37,13 +41,10 @@ def arithmetic_arranger(problems, showResult=False):
                 result = int(first_number) - int(second_number)
 
             fourth_line = f"{' ' * (((separator_number - len(second_number)))-1)}{result}"
-            operation_to_add = f"{first_line}\n{second_line}\n{third_line}\n{fourth_line}\n"
-            formated_string += operation_to_add
-        else:
-            operation_to_add = f"{first_line}\n{second_line}\n{third_line}\n"
-            formated_string += operation_to_add
+            operation_to_add += f"{fourth_line}\n"
+            formatted_operations += operation_to_add
 
-    return formated_string
+    return formatted_operations
 
 
 # print(arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"]))
