@@ -14,7 +14,6 @@ def arithmetic_arranger(problems, showResult=False):
         splited_problem = problem.split()
         first_number, second_number = splited_problem[0], splited_problem[2]
         operator = splited_problem[1]
-        # print(len(problems))
 
         try:
             int(first_number)
@@ -24,8 +23,6 @@ def arithmetic_arranger(problems, showResult=False):
 
         if operator != "+" and operator != "-":
             return(f"Error: Operator must be '+' or '-'.")
-
-        operator = operator[0]
 
         if len(first_number) > 4 or len(second_number) > 4:
             return "Error: Numbers cannot be more than four digits."
@@ -56,10 +53,8 @@ def arithmetic_arranger(problems, showResult=False):
                 else:
                     fourth_line += f"{' ' * ((separator_number - mayor))}{result}    "
             else:
-                if result < 0:
-                    fourth_line += f"{' ' * (((separator_number - mayor))-1)}{result}"
-                else:
-                    fourth_line += f"{' ' * ((separator_number - mayor)-1)}{result}"
+                fourth_line += f"{' ' * ((separator_number - mayor)-1)}{result}"
+
             formatted_operations += f"\n{fourth_line}"
 
     return formatted_operations
